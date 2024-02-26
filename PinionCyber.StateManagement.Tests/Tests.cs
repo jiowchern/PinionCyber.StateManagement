@@ -16,8 +16,10 @@ namespace PinionCyber.StateManagement.Tests
             var controller = new Switcher<ISwitch>(new TestCallSwitch());
             controller.Switch(state);
             controller.Switch(new TestCallSwitch());
-            Assert.AreEqual(1, state.EndCallCount);
-            Assert.AreEqual(1, state.StartCallCount);
+
+                        
+            Assert.That(1,Is.EqualTo(state.EndCallCount));
+            Assert.That(1, Is.EqualTo(state.StartCallCount));
         }
        
         [Test]
@@ -28,9 +30,10 @@ namespace PinionCyber.StateManagement.Tests
             machine.Switch(state);
             machine.Activer().Update();
             machine.Empty();
-            Assert.AreEqual(1, state.EndCallCount);
-            Assert.AreEqual(1, state.StartCallCount);
-            Assert.AreEqual(1, state.UpdateCallCount);
+            Assert.That(1, Is.EqualTo(state.EndCallCount));
+            Assert.That(1, Is.EqualTo(state.StartCallCount));
+            Assert.That(1, Is.EqualTo(state.UpdateCallCount));
+            
         }
     }
 }

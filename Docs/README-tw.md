@@ -186,18 +186,22 @@ class Controller
     public enum SampleState { AccessState , GetState }
     SampleState _SampleState;
     delegate System.Func<string,string> _CommandHandler;
-    public void Start()
+    readonly Sample _Sample;
+    public Controller()
     {
-        var sample = new Sample();
-        sample.AccessibleEvent += (access) =>{
+        _Sample = new Sample();
+        _Sample.AccessibleEvent += (access) =>{
             _SampleState = SampleState.AccessState;
             _CommandHandler = _CreateHandler(access);
         };
-        sample.GetterEvent += (getter) =>{
+        _Sample.GetterEvent += (getter) =>{
             _SampleState = SampleState.GetState;
             _CommandHandler = _CreateHandler(getter);
         };
-        sample.Start();
+    }
+    public void Start()
+    {
+        _Sample.Start();
     }
     // ¨ú±oª¬ºA
     public SampleState GetSampleState()

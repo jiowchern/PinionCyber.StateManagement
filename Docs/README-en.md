@@ -192,6 +192,7 @@ class Controller
     public enum SampleState { AccessState, GetState }
     SampleState _SampleState;
     delegate System.Func<string,string> _CommandHandler;
+    readonly Sample _Sample;
     public Controller()
     {
         _Sample = new Sample();
