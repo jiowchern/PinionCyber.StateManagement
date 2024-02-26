@@ -4,7 +4,7 @@ using System;
 
 namespace PinionCyber.StateManagement
 {
-    public class Switcher<T> : System.IDisposable where T : ISwitch 
+    public class Switcher<T> where T : ISwitch 
     {
         T _Switch;
 
@@ -18,11 +18,6 @@ namespace PinionCyber.StateManagement
             _Switch.End();
             _Switch = state;
             _Switch.Start();
-        }
-
-        void IDisposable.Dispose()
-        {
-            _Switch.End();
         }
 
         public T Activer()
