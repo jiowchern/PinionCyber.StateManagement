@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinionCyber.StateManagement", "PinionCyber.StateManagement\PinionCyber.StateManagement.csproj", "{C6353CD0-6F6E-44B6-879A-EB3096CAE029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinionCyber.StateManagement.Tests", "PinionCyber.StateManagement.Tests\PinionCyber.StateManagement.Tests.csproj", "{340ADEBB-8D04-4596-A5D8-0AA11191FDA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE95B364-E3B1-47F7-ACF5-ADFD4C5481DE}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6353CD0-6F6E-44B6-879A-EB3096CAE029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6353CD0-6F6E-44B6-879A-EB3096CAE029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6353CD0-6F6E-44B6-879A-EB3096CAE029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6353CD0-6F6E-44B6-879A-EB3096CAE029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340ADEBB-8D04-4596-A5D8-0AA11191FDA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340ADEBB-8D04-4596-A5D8-0AA11191FDA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340ADEBB-8D04-4596-A5D8-0AA11191FDA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340ADEBB-8D04-4596-A5D8-0AA11191FDA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C4F8B3F-F1BD-4266-94B6-25F7A5818C12}
+	EndGlobalSection
+EndGlobal
