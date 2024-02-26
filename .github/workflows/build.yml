@@ -21,18 +21,19 @@ jobs:
       run: dotnet build --no-restore -c Release
       
     - name: Test
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-      working-directory: ./
+      run: dotnet test --collect:"XPlat Code Coverage"
+      
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: jiowchern/PinionCyber.StateManagement
+        files: '**/coverage.cobertura.xml'
       
     - name: Pack
       run: dotnet pack --no-build -c Release -o ./nupkg
       
     - name: Push NuGet Package
-      run: dotnet nuget push "./nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push "./nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
       if: github.ref == 'refs/heads/main' # 僅在主分支上推送NuGet包
