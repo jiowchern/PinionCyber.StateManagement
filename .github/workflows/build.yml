@@ -12,7 +12,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '6.0' # §ó·s¬°.NET 6
+        dotnet-version: '6.0' # æ›´æ–°ç‚º.NET 6
     
     - name: Restore dependencies
       run: dotnet restore
@@ -21,8 +21,9 @@ jobs:
       run: dotnet build --no-restore -c Release
       
     - name: Test
-      run: dotnet test --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-      
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+      working-directory: ./
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
@@ -34,4 +35,4 @@ jobs:
       
     - name: Push NuGet Package
       run: dotnet nuget push "./nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }}
-      if: github.ref == 'refs/heads/main' # ¶È¦b¥D¤À¤ä¤W±À°eNuGet¥]
+      if: github.ref == 'refs/heads/main' # åƒ…åœ¨ä¸»åˆ†æ”¯ä¸Šæ¨é€NuGetåŒ…
