@@ -12,12 +12,12 @@ namespace PinionCyber.StateManagement.Sample1
 {
     class StateA : PinionCyber.StateManagement.IState
     {                
-        void ISwitch.End()
+        void IActivable.Disable()
         {
             // 狀態結束
         }
 
-        void ISwitch.Start()
+        void IActivable.Enable()
         {
             // 狀態起始
         }
@@ -41,9 +41,9 @@ namespace PinionCyber.StateManagement.Sample1
 
         // 狀態切換
         var stateA = new StateA();
-        machine.Switch(stateA);
+        machine.Change(stateA);
         var stateB = new StateB();  // 另一個狀態
-        machine.Switch(stateB);
+        machine.Change(stateB);
 
         // 狀態更新
         machine.Activer().Update();
@@ -91,14 +91,14 @@ class Sample
     {
         var state = new StateA();       
         state.DoneEvent += _ToStateB; // 當 StateA 完成則切換到 StateB
-        _Machine.Switch(state);
+        _Machine.Change(state);
     }    
 
     void _ToStateB()
     {
         var state = new StateB();
         state.DoneEvent += _ToStateA;// 當 StateB 完成則切換到 StateA
-        _Machine.Switch(state);
+        _Machine.Change(state);
     }
 }
 ```
@@ -153,7 +153,7 @@ class Sample
     }
     // 創建這著方法方便事件註冊完後啟動初始狀態
     // 或者 class Sample 本身也可以是個狀態.
-    public void Start()
+    public void Enable()
     {
         // 首先先切到 StateA
         _ToStateA();
@@ -162,7 +162,7 @@ class Sample
     {
         var state = new StateA();       
         state.DoneEvent += _ToStateB; // 當 StateA 完成則切換到 StateB
-        _Machine.Switch(state);
+        _Machine.Change(state);
         // 狀態通知
         AccessibleEvent(state);
     }    
@@ -171,7 +171,7 @@ class Sample
     {
         var state = new StateB();
         state.DoneEvent += _ToStateA;// 當 StateB 完成則切換到 StateA
-        _Machine.Switch(state);
+        _Machine.Change(state);
         // 狀態通知
         GetterEvent(state);
     }
@@ -199,9 +199,9 @@ class Controller
             _CommandHandler = _CreateHandler(getter);
         };
     }
-    public void Start()
+    public void Enable()
     {
-        _Sample.Start();
+        _Sample.Enable();
     }
     // 取得狀態
     public SampleState GetSampleState()

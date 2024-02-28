@@ -13,14 +13,14 @@ namespace PinionCyber.StateManagement.Sample1
 {
     class StateA : PinionCyber.StateManagement.IState
     {                
-        void ISwitch.End()
+        void IActivable.Disbale()
         {
-             // State ends
+             // State Disbales
         }
 
-        void ISwitch.Start()
+        void IActivable.Enable()
         {
-            // State starts
+            // State Enables
         }
 
         void IUpdate.Update()
@@ -40,14 +40,14 @@ namespace PinionCyber.StateManagement.Sample1
         
         var machine = new PinionCyber.StateManagement.StateMachine();
 
-        // Switching states
+        // Changing states
         var stateA = new StateA();
-        machine.Switch(stateA);
+        machine.Change(stateA);
         var stateB = new StateB();  // Another state
-        machine.Switch(stateB);
+        machine.Change(stateB);
 
         // Updating state
-        machine.Active().Update();
+        machine.Activer().Update();
 
         // Clearing states
         machine.Empty();
@@ -57,8 +57,8 @@ namespace PinionCyber.StateManagement.Sample1
 ## Cookbook 
 State machines are a design pattern. The above code handles the core part of a state machine. To fulfill a project's requirements, some control handling is needed. Below are the ways to use a state machine.
 
-### State Switching
-Use events to output the result of a state. Below is the switching between StateA and StateB.
+### State Changeing
+Use events to output the result of a state. Below is the Changeing between StateA and StateB.
 
 ```csharp
 class StateA : IState
@@ -77,7 +77,7 @@ class StateB : IState
     public event System.Action DoneEvent;
 }
 ```
-Switch between two states using ```DoneEvent```.
+Change between two states using ```DoneEvent```.
 
 ```csharp
 class Sample
@@ -86,22 +86,22 @@ class Sample
     public Sample()
     {
         _Machine = new PinionCyber.StateManagement.StateMachine();
-        // First switch to StateA
+        // First Change to StateA
         _ToStateA();
     }
     
     void _ToStateA()
     {
         var state = new StateA();       
-        state.DoneEvent += _ToStateB; // When StateA completes, switch to StateB
-        _Machine.Switch(state);
+        state.DoneEvent += _ToStateB; // When StateA completes, Change to StateB
+        _Machine.Change(state);
     }    
 
     void _ToStateB()
     {
         var state = new StateB();
-        state.DoneEvent += _ToStateA; // When StateB completes, switch back to StateA
-        _Machine.Switch(state);
+        state.DoneEvent += _ToStateA; // When StateB completes, Change back to StateA
+        _Machine.Change(state);
     }
 }
 ```
@@ -156,18 +156,18 @@ class Sample
         _Machine = new PinionCyber.StateManagement.StateMachine();
         
     }
-    // This method makes it easy to start the initial state after event registration
+    // This method makes it easy to Enable the initial state after event registration
     // Or the class Sample itself can also be a state.
-    public void Start()
+    public void Enable()
     {
-        // First switch to StateA
+        // First Change to StateA
         _ToStateA();
     }
     void _ToStateA()
     {
         var state = new StateA();       
-        state.DoneEvent += _ToStateB; // When StateA completes, switch to StateB
-        _Machine.Switch(state);
+        state.DoneEvent += _ToStateB; // When StateA completes, Change to StateB
+        _Machine.Change(state);
         // State notification
         AccessibleEvent?.Invoke(state);
     }    
@@ -175,8 +175,8 @@ class Sample
     void _ToStateB()
     {
         var state = new StateB();
-        state.DoneEvent += _ToStateA; // When StateB completes, switch back to StateA
-        _Machine.Switch(state);
+        state.DoneEvent += _ToStateA; // When StateB completes, Change back to StateA
+        _Machine.Change(state);
         // State notification
         GetterEvent?.Invoke(state);
     }
@@ -205,9 +205,9 @@ class Controller
             _CommandHandler = _CreateHandler(getter);
         };
     }
-    public void Start()
+    public void Enable()
     {
-        _Sample.Start();
+        _Sample.Enable();
     }
     // Get state
     public SampleState GetSampleState()

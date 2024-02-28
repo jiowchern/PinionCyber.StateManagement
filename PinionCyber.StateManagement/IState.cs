@@ -2,7 +2,7 @@
 
 namespace PinionCyber.StateManagement
 {
-    public interface IState : ISwitch , IUpdate
+    public interface IState : IActivable , IUpdate
     {    
     }
 }

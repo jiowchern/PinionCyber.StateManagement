@@ -3,16 +3,16 @@
 namespace PinionCyber.StateManagement
 {
     
-    public class StateMachine : Switcher<IState>         
+    public class StateMachine : ActiverChanger<IState>         
     {
         class EmptyState : IState
         {
-            void ISwitch.End()
+            void IActivable.Disable()
             {
                 
             }
 
-            void ISwitch.Start()
+            void IActivable.Enable()
             {
                 
             }
@@ -32,7 +32,7 @@ namespace PinionCyber.StateManagement
         }
         public void Empty()
         {
-            Switch(new EmptyState());
+            Change(new EmptyState());
         }
     }
 

@@ -1,16 +1,16 @@
 ﻿namespace PinionCyber.StateManagement.Tests
 {
-    class TestCallSwitch : ISwitch
+    class TestCallSwitch : IActivable
     {
         public int EndCallCount;
         public int StartCallCount;
 
-        void ISwitch.End()
+        void IActivable.Disable()
         {
             EndCallCount++;
         }
 
-        void ISwitch.Start()
+        void IActivable.Enable()
         {
             StartCallCount++;
         }

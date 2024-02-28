@@ -10,12 +10,12 @@ namespace PinionCyber.StateManagement.Tests
         }
 
         [Test]
-        public void Switch()
+        public void ActiverChanger()
         {
             var state = new TestCallSwitch();
-            var controller = new Switcher<ISwitch>(new TestCallSwitch());
-            controller.Switch(state);
-            controller.Switch(new TestCallSwitch());
+            var controller = new ActiverChanger<IActivable>(new TestCallSwitch());
+            controller.Change(state);
+            controller.Change(new TestCallSwitch());
 
                         
             Assert.That(1,Is.EqualTo(state.EndCallCount));
@@ -23,11 +23,11 @@ namespace PinionCyber.StateManagement.Tests
         }
        
         [Test]
-        public void StateWithEmpty()
+        public void StateMachine()
         {
             var state = new TestCallState();
             var machine = new StateMachine();
-            machine.Switch(state);
+            machine.Change(state);
             machine.Activer().Update();
             machine.Empty();
             Assert.That(1, Is.EqualTo(state.EndCallCount));
