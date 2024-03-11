@@ -3,12 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
-	  <Version>0.1.1</Version>
+	  <Version>0.1.2</Version>
 	  <Authors>jc</Authors>
 	  <Company>PinionCyber</Company>	  
 	  <Description>A very simple state machine.</Description>
 	  <PackageTags>StateMachine</PackageTags>
 	  <RepositoryUrl>https://github.com/jiowchern/PinionCyber.StateManagement</RepositoryUrl>
+	  <PackageProjectUrl>https://github.com/jiowchern/PinionCyber.StateManagement</PackageProjectUrl>
+
 	  <RepositoryType>git</RepositoryType>	  
   </PropertyGroup>
 
