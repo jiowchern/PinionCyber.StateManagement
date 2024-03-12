@@ -261,3 +261,6 @@ class Player
 ```
 This way the state will be encapsulated and the code can be easily maintained and expanded without the need for enumeration.
 
+## Install
+**Download** [![nuget](https://buildstats.info/nuget/PinionCyber.StateManagement)  ](https://www.nuget.org/packages/PinionCyber.StateManagement)
+
